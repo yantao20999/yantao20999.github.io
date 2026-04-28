@@ -7,91 +7,76 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --primary: #003366; --secondary: #00509d; --text: #1a202c; --light: #f8fafc; }
-        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', 'PingFang SC', sans-serif; line-height: 1.7; color: var(--text); background: #ffffff; margin: 0; padding: 0; }
-        .container { max-width: 960px; margin: 0 auto; padding: 0 25px; }
-        
-        /* Hero Section */
-        .hero { padding: 80px 0 60px; background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); border-bottom: 1px solid #eee; }
-        .hero-flex { display: flex; flex-direction: row-reverse; align-items: center; gap: 50px; }
-        .profile-pic { width: 240px; height: 240px; border-radius: 12px; object-fit: cover; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .hero-text h1 { font-size: 2.8rem; margin: 0; color: var(--primary); }
-        .hero-text .subtitle { font-size: 1.3rem; color: var(--secondary); font-weight: 600; margin: 10px 0; }
-        .tag-talent { display: inline-block; background: var(--primary); color: white; padding: 4px 12px; border-radius: 4px; font-size: 0.85rem; margin-bottom: 15px; }
-
-        /* Sections */
-        section { padding: 50px 0; border-bottom: 1px solid #f0f0f0; }
-        h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
-        h2 i { font-size: 1.3rem; opacity: 0.8; }
-
-        /* Experience */
-        .exp-item { margin-bottom: 35px; }
-        .exp-header { display: flex; justify-content: space-between; font-weight: bold; font-size: 1.1rem; color: #2d3748; flex-wrap: wrap; }
-        .exp-sub { color: var(--secondary); font-weight: 600; margin: 4px 0; }
-        .exp-desc { font-size: 0.95rem; color: #4a5568; margin-top: 8px; }
-        .exp-desc ul { padding-left: 18px; margin-top: 5px; }
-
-        /* Lists */
-        .grid-list { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .list-item { background: var(--light); padding: 12px 18px; border-radius: 8px; border-left: 4px solid var(--secondary); font-size: 0.95rem; }
-
-        /* Buttons */
-        .btn-group { display: flex; gap: 12px; margin-top: 25px; }
-        .btn { padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.7; color: var(--text); max-width: 960px; margin: 0 auto; padding: 40px 20px; }
+        .hero-flex { display: flex; flex-direction: row-reverse; align-items: center; gap: 40px; margin-bottom: 50px; }
+        .profile-pic { width: 220px; height: 220px; border-radius: 8px; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .tag-talent { background: var(--primary); color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px; display: inline-block; }
+        h1 { font-size: 2.5rem; color: var(--primary); margin: 0; }
+        h2 { border-bottom: 2px solid #eee; padding-bottom: 10px; color: var(--primary); margin-top: 40px; }
+        .exp-item { margin-bottom: 30px; }
+        .grid-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+        .list-item { background: var(--light); padding: 10px; border-left: 4px solid var(--secondary); font-size: 0.9rem; }
+        .btn-group { display: flex; gap: 10px; margin-top: 20px; }
+        .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: 600; font-size: 0.9rem; border: 1px solid var(--primary); }
         .btn-primary { background: var(--primary); color: white; }
-        .btn-outline { border: 2px solid var(--primary); color: var(--primary); }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-
-        @media (max-width: 768px) {
-            .hero-flex { flex-direction: column; text-align: center; }
-            .grid-list { grid-template-columns: 1fr; }
-            .exp-header { flex-direction: column; }
-        }
+        @media (max-width: 600px) { .hero-flex { flex-direction: column; text-align: center; } .grid-list { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-    <main>
-        <section class="hero">
-            <div class="container hero-flex">
-                <img src="me.jpg" alt="严涛 博士" class="profile-pic">
-                <div class="hero-text">
-                    <span class="tag-talent">2023年入选国家级海外高层次人才计划</span>
-                    <h1>严涛 博士</h1>
-                    <p class="subtitle">Yan Tao, PhD</p>
-                    <p style="max-width: 600px;">首席科学家 | 密码子(杭州)科技有限公司<br>拥有海外 14 年学习工作经历，具备前沿科技国际视野。</p>
-                    
-                    <div class="btn-group">
-                        <a href="mailto:yantao1990@gmail.com" class="btn btn-primary"><i class="fas fa-envelope"></i> 联系我</a>
-                        <a href="https://www.linkedin.com/in/2taoyan/" target="_blank" class="btn btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                        <a href="https://scholar.google.com/citations?user=aQ6ycMEAAAAJ&hl=en" target="_blank" class="btn btn-outline"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
-                    </div>
-                </div>
+    <div class="hero-flex">
+        <img src="me.jpg" alt="严涛 博士" class="profile-pic">
+        <div>
+            <div class="tag-talent">2023年入选国家级海外高层次人才计划 [cite: 7]</div>
+            <h1>严涛 博士 (Yan Tao, PhD) [cite: 1, 103]</h1>
+            <p><strong>首席科学家 | 密码子(杭州)科技有限公司 [cite: 11]</strong></p>
+            <p>拥有海外14年学习工作经历，曾于麻省理工学院与剑桥大学实验室深造 [cite: 3]。师从过两位诺奖得主，具备前沿科技国际视野 [cite: 3]。</p>
+            <div class="btn-group">
+                <a href="mailto:yantao1990@gmail.com" class="btn btn-primary">Email [cite: 92]</a>
+                <a href="https://www.linkedin.com/in/2taoyan" class="btn">LinkedIn [cite: 93]</a>
+                <a href="https://scholar.google.com/citations?user=aQ6ycMEAAAAJ" class="btn">Google Scholar </a>
             </div>
-        </section>
+        </div>
+    </div>
 
-        <section class="container">
-            <h2><i class="fas fa-file-alt"></i> 个人综述</h2>
-            <p>曾于麻省理工学院 (MIT) 与剑桥大学 (University of Cambridge) 实验室深造，<strong>师从两位诺贝尔奖得主</strong>。现任职密码子科技首席科学家，曾任美国纳斯达克上市头部生物技术公司 Illumina 高级科学家。具备基因检测技术和上下游领域专业性，致力于基于研究成果的专利授权和商业化。</p>
-            
-            <h3 style="font-size:1.1rem; margin-top:20px;">主要涉及领域：</h3>
-            <div class="grid-list">
-                <div class="list-item">化学生物学 & 生物化学</div>
-                <div class="list-item">有机化学 & 催化</div>
-                <div class="list-item">核酸化学</div>
-                <div class="list-item">多组学交叉学科</div>
-            </div>
-        </section>
+    <h2>主要涉及领域 [cite: 5]</h2>
+    <div class="grid-list">
+        <div class="list-item">化化学、有机化学、催化 [cite: 5]</div>
+        <div class="list-item">核酸化学、生物化学 [cite: 5]</div>
+        <div class="list-item">化学生物学 [cite: 5]</div>
+    </div>
 
-        <section id="experience" class="container">
-            <h2><i class="fas fa-briefcase"></i> 工作经历</h2>
-            
-            <div class="exp-item">
-                <div class="exp-header"><span>首席科学家 (CSO), DNA 数据存储技术</span> <span>2025.11 - 至今</span></div>
-                <div class="exp-sub">密码子(杭州)科技有限公司 | 杭州</div>
-                <div class="exp-desc">
-                    引入原有国际头部测序企业的研发管理与实验规范；完成中远期研发路线规划；主导专利布局与企业技术护城河设计。
-                </div>
-            </div>
+    <h2>研究兴趣 [cite: 6]</h2>
+    <div class="grid-list">
+        <div class="list-item">化学生物学、生物物理学 [cite: 6]</div>
+        <div class="list-item">分子检测、基因测序技术 [cite: 6]</div>
+        <div class="list-item">多组学、癌症早筛 [cite: 6]</div>
+        <div class="list-item">人工智能加大健康、抗衰老 [cite: 6]</div>
+    </div>
 
-            <div class="exp-item">
-                <div class="exp-header"><span>高级科学家 / 项目负责人, 基因二代测序技术(NGS)</span> <span>
+    <h2>工作经历 [cite: 9]</h2>
+    <div class="exp-item">
+        <strong>首席科学家, DNA 数据存储技术 | 密码子(杭州)科技有限公司 [cite: 11]</strong><br>
+        <small>2025.11 - 至今 [cite: 10]</small>
+        <ul style="font-size: 0.9rem;">
+            <li>主导专利布局与企业技术护城河设计 [cite: 14]。</li>
+            <li>明确研发路线规划，为产品化奠定基础 [cite: 13]。</li>
+        </ul>
+    </div>
+    <div class="exp-item">
+        <strong>高级科学家/项目负责人 | Illumina, Inc. 因美纳 [cite: 17, 18]</strong><br>
+        <small>2022 - 2025 [cite: 17]</small>
+        <p style="font-size: 0.9rem;">负责边合成边测序技术、荧光染料技术及碱基编码技术研发 [cite: 19]。</p>
+    </div>
+
+    <h2>教育背景 [cite: 34]</h2>
+    <p>理学博士 | 荷兰格罗宁根大学 (师从诺奖得主 Ben Feringa 教授) [cite: 35]<br>
+    硕士 | 法国雷恩大学 [cite: 37]<br>
+    本科 | 兰州大学 [cite: 38]</p>
+
+    <footer style="margin-top: 50px; font-size: 0.8rem; color: #888; text-align: center;">
+        © 2026 Yan Tao, PhD | 基于研究成果的专利授权和商业化 [cite: 6]
+    </footer>
+
+</body>
+</html>
