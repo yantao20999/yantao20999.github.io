@@ -6,76 +6,108 @@
     <title>严涛 博士 | Yan Tao, PhD</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --primary: #003366; --secondary: #00509d; --text: #1a202c; --light: #f8fafc; }
-        body { font-family: 'Segoe UI', sans-serif; line-height: 1.7; color: var(--text); max-width: 960px; margin: 0 auto; padding: 40px 20px; }
-        .hero-flex { display: flex; flex-direction: row-reverse; align-items: center; gap: 40px; margin-bottom: 50px; }
-        .profile-pic { width: 220px; height: 220px; border-radius: 8px; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .tag-talent { background: var(--primary); color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px; display: inline-block; }
-        h1 { font-size: 2.5rem; color: var(--primary); margin: 0; }
-        h2 { border-bottom: 2px solid #eee; padding-bottom: 10px; color: var(--primary); margin-top: 40px; }
-        .exp-item { margin-bottom: 30px; }
-        .grid-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
-        .list-item { background: var(--light); padding: 10px; border-left: 4px solid var(--secondary); font-size: 0.9rem; }
-        .btn-group { display: flex; gap: 10px; margin-top: 20px; }
-        .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: 600; font-size: 0.9rem; border: 1px solid var(--primary); }
-        .btn-primary { background: var(--primary); color: white; }
-        @media (max-width: 600px) { .hero-flex { flex-direction: column; text-align: center; } .grid-list { grid-template-columns: 1fr; } }
+        :root { --navy: #002147; --blue: #0056b3; --gold: #c5a059; --bg: #ffffff; --text: #333; }
+        body { font-family: 'Helvetica Neue', Arial, 'PingFang SC', sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); margin: 0; padding: 0; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 40px; }
+
+        /* Hero Section */
+        .hero { padding: 100px 0 60px; text-align: center; background: linear-gradient(to bottom, #f9f9f9, #fff); }
+        .profile-pic { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; margin-bottom: 25px; border: 4px solid #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .talent-tag { color: var(--gold); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 10px; display: block; }
+        h1 { font-size: 3rem; color: var(--navy); margin: 0; }
+        .nobel-badge { font-style: italic; color: #666; margin-top: 10px; font-size: 1.1rem; }
+
+        /* Milestone Section */
+        .milestones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin: 60px 0; }
+        .m-card { padding: 30px; border: 1px solid #eee; border-radius: 12px; transition: 0.3s; text-align: center; }
+        .m-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.05); }
+        .m-card i { font-size: 2rem; color: var(--blue); margin-bottom: 15px; }
+        .m-card h3 { color: var(--navy); margin-bottom: 10px; }
+
+        /* Expertise Section */
+        .section-title { text-align: center; font-size: 2rem; color: var(--navy); margin-bottom: 40px; }
+        .expertise-box { background: var(--navy); color: white; padding: 50px; border-radius: 20px; margin-bottom: 60px; }
+        .expertise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .exp-item h4 { color: var(--gold); margin-bottom: 15px; font-size: 1.2rem; }
+
+        /* Action Buttons */
+        .btn-group { display: flex; justify-content: center; gap: 20px; margin: 40px 0; flex-wrap: wrap; }
+        .btn { padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 600; transition: 0.3s; display: inline-flex; align-items: center; gap: 10px; }
+        .btn-primary { background: var(--navy); color: white; }
+        .btn-outline { border: 2px solid var(--navy); color: var(--navy); }
+        .btn:hover { opacity: 0.9; transform: scale(1.05); }
+
+        footer { text-align: center; padding: 60px 0; border-top: 1px solid #eee; color: #999; }
+
+        @media (max-width: 768px) {
+            .milestones { grid-template-columns: 1fr; }
+            .expertise-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 2.2rem; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="hero-flex">
-        <img src="me.jpg" alt="严涛 博士" class="profile-pic">
-        <div>
-            <div class="tag-talent">2023年入选国家级海外高层次人才计划 [cite: 7]</div>
-            <h1>严涛 博士 (Yan Tao, PhD) [cite: 1, 103]</h1>
-            <p><strong>首席科学家 | 密码子(杭州)科技有限公司 [cite: 11]</strong></p>
-            <p>拥有海外14年学习工作经历，曾于麻省理工学院与剑桥大学实验室深造 [cite: 3]。师从过两位诺奖得主，具备前沿科技国际视野 [cite: 3]。</p>
+    <section class="hero">
+        <div class="container">
+            <img src="me.jpg" alt="严涛 博士" class="profile-pic">
+            <span class="talent-tag">国家级海外高层次人才</span>
+            <h1>严涛 博士 / Yan Tao, PhD</h1>
+            <p class="nobel-badge">曾于麻省理工学院 (MIT) 与剑桥大学 (Cambridge) 深造，师从两位诺贝尔奖得主</p>
+            
             <div class="btn-group">
-                <a href="mailto:yantao1990@gmail.com" class="btn btn-primary">Email [cite: 92]</a>
-                <a href="https://www.linkedin.com/in/2taoyan" class="btn">LinkedIn [cite: 93]</a>
-                <a href="https://scholar.google.com/citations?user=aQ6ycMEAAAAJ" class="btn">Google Scholar </a>
+                <a href="mailto:yantao1990@gmail.com" class="btn btn-primary"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://www.linkedin.com/in/2taoyan/" target="_blank" class="btn btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://scholar.google.com/citations?user=aQ6ycMEAAAAJ" target="_blank" class="btn btn-outline"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
+                <a href="Resume_YanTao.pdf" target="_blank" class="btn btn-outline" style="border-color: #c5a059; color: #c5a059;"><i class="fas fa-file-pdf"></i> 下载完整简历 (CV)</a>
             </div>
         </div>
+    </section>
+
+    <div class="container">
+        <div class="milestones">
+            <div class="m-card">
+                <i class="fas fa-university"></i>
+                <h3>MIT & Cambridge</h3>
+                <p>在麻省理工与剑桥大学实验室担任研究员，师从诺奖得主 R. Schrock 与 B. Feringa，并在 Shankar Balasubramanian 爵士实验室主导核心技术开发。</p>
+            </div>
+            <div class="m-card">
+                <i class="fas fa-dna"></i>
+                <h3>Illumina (因美纳)</h3>
+                <p>作为高级科学家/项目负责人，主导 NGS 边合成边测序技术迭代、荧光染料研发及全球新兴技术趋势评估。</p>
+            </div>
+            <div class="m-card">
+                <i class="fas fa-rocket"></i>
+                <h3>密码子科技</h3>
+                <p>现任首席科学家 (CSO)，引领 DNA 数据存储技术的工程化与商业化落地，构建企业技术护城河。</p>
+            </div>
+        </div>
+
+        <section class="expertise-box">
+            <div class="expertise-grid">
+                <div class="exp-item">
+                    <h4>技术背景 / Technical Domain</h4>
+                    <p>深度交叉化学生物学、有机化学、催化、核酸化学及生物化学。长期致力于基因测序技术、多组学及分子检测技术的前沿创新。</p>
+                </div>
+                <div class="exp-item">
+                    <h4>核心使命 / Current Focus</h4>
+                    <p>专注于<strong>学术技术转化、硬科技创业及技术咨询</strong>。利用 14 年海外研发积累，协助科研成果走向市场，并为大健康、抗衰老及癌症早筛领域提供商业决策支持。</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">研究兴趣</h2>
+            <div style="text-align: center; color: #666; font-size: 1.1rem; max-width: 800px; margin: 0 auto 40px;">
+                化学生物学 · 生物物理学 · 分子检测 · 基因测序 · 多组学 · 癌症早筛 · 人工智能+大健康 · 抗衰老 · 技术商业化
+            </div>
+        </section>
     </div>
 
-    <h2>主要涉及领域 [cite: 5]</h2>
-    <div class="grid-list">
-        <div class="list-item">化化学、有机化学、催化 [cite: 5]</div>
-        <div class="list-item">核酸化学、生物化学 [cite: 5]</div>
-        <div class="list-item">化学生物学 [cite: 5]</div>
-    </div>
-
-    <h2>研究兴趣 [cite: 6]</h2>
-    <div class="grid-list">
-        <div class="list-item">化学生物学、生物物理学 [cite: 6]</div>
-        <div class="list-item">分子检测、基因测序技术 [cite: 6]</div>
-        <div class="list-item">多组学、癌症早筛 [cite: 6]</div>
-        <div class="list-item">人工智能加大健康、抗衰老 [cite: 6]</div>
-    </div>
-
-    <h2>工作经历 [cite: 9]</h2>
-    <div class="exp-item">
-        <strong>首席科学家, DNA 数据存储技术 | 密码子(杭州)科技有限公司 [cite: 11]</strong><br>
-        <small>2025.11 - 至今 [cite: 10]</small>
-        <ul style="font-size: 0.9rem;">
-            <li>主导专利布局与企业技术护城河设计 [cite: 14]。</li>
-            <li>明确研发路线规划，为产品化奠定基础 [cite: 13]。</li>
-        </ul>
-    </div>
-    <div class="exp-item">
-        <strong>高级科学家/项目负责人 | Illumina, Inc. 因美纳 [cite: 17, 18]</strong><br>
-        <small>2022 - 2025 [cite: 17]</small>
-        <p style="font-size: 0.9rem;">负责边合成边测序技术、荧光染料技术及碱基编码技术研发 [cite: 19]。</p>
-    </div>
-
-    <h2>教育背景 [cite: 34]</h2>
-    <p>理学博士 | 荷兰格罗宁根大学 (师从诺奖得主 Ben Feringa 教授) [cite: 35]<br>
-    硕士 | 法国雷恩大学 [cite: 37]<br>
-    本科 | 兰州大学 [cite: 38]</p>
-
-    <footer style="margin-top: 50px; font-size: 0.8rem; color: #888; text-align: center;">
-        © 2026 Yan Tao, PhD | 基于研究成果的专利授权和商业化 [cite: 6]
+    <footer>
+        <div class="container">
+            <p>© 2026 Yan Tao, PhD. 致力于基于研究成果的专利授权与商业化落地。</p>
+        </div>
     </footer>
 
 </body>
