@@ -6,106 +6,92 @@
     <title>严涛 博士 | Yan Tao, PhD</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --primary-color: #1a428a; --text-color: #334155; --bg-color: #f8fafc; }
-        body { font-family: "Inter", "PingFang SC", sans-serif; line-height: 1.6; color: var(--text-color); max-width: 900px; margin: 0 auto; padding: 40px 20px; background-color: var(--bg-color); }
+        :root { --primary: #003366; --secondary: #00509d; --text: #1a202c; --light: #f8fafc; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', 'PingFang SC', sans-serif; line-height: 1.7; color: var(--text); background: #ffffff; margin: 0; padding: 0; }
+        .container { max-width: 960px; margin: 0 auto; padding: 0 25px; }
         
-        /* Header Section */
-        .header { display: flex; flex-direction: row-reverse; justify-content: space-between; align-items: center; gap: 40px; margin-bottom: 50px; background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
-        .profile-pic { width: 200px; height: 200px; border-radius: 12px; object-fit: cover; flex-shrink: 0; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
-        h1 { font-size: 2.2rem; color: var(--primary-color); margin: 0; }
-        .tagline { font-size: 1.1rem; color: #64748b; margin: 10px 0; font-weight: 500; }
-        
-        /* Social Links */
-        .social-links { display: flex; gap: 15px; margin-top: 20px; }
-        .btn { padding: 8px 16px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
-        .btn-mail { background: #e2e8f0; color: #1e293b; }
-        .btn-linkedin { background: #0077b5; color: white; }
-        .btn-scholar { background: #4285f4; color: white; }
-        .btn:hover { opacity: 0.8; transform: translateY(-2px); }
+        /* Hero Section */
+        .hero { padding: 80px 0 60px; background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); border-bottom: 1px solid #eee; }
+        .hero-flex { display: flex; flex-direction: row-reverse; align-items: center; gap: 50px; }
+        .profile-pic { width: 240px; height: 240px; border-radius: 12px; object-fit: cover; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .hero-text h1 { font-size: 2.8rem; margin: 0; color: var(--primary); }
+        .hero-text .subtitle { font-size: 1.3rem; color: var(--secondary); font-weight: 600; margin: 10px 0; }
+        .tag-talent { display: inline-block; background: var(--primary); color: white; padding: 4px 12px; border-radius: 4px; font-size: 0.85rem; margin-bottom: 15px; }
 
-        /* Main Content */
-        .card { background: white; padding: 30px; border-radius: 16px; margin-bottom: 30px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-        h2 { font-size: 1.5rem; color: var(--primary-color); border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-        
-        ul { padding-left: 20px; }
-        li { margin-bottom: 10px; }
-        .experience-item { margin-bottom: 20px; }
-        .exp-title { font-weight: 700; color: #1e293b; }
-        .exp-meta { font-size: 0.9rem; color: #64748b; display: flex; justify-content: space-between; }
+        /* Sections */
+        section { padding: 50px 0; border-bottom: 1px solid #f0f0f0; }
+        h2 { font-size: 1.6rem; color: var(--primary); margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+        h2 i { font-size: 1.3rem; opacity: 0.8; }
 
-        .interest-tags { display: flex; flex-wrap: wrap; gap: 10px; }
-        .tag { background: #eff6ff; color: #2563eb; padding: 4px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: 500; border: 1px solid #dbeafe; }
+        /* Experience */
+        .exp-item { margin-bottom: 35px; }
+        .exp-header { display: flex; justify-content: space-between; font-weight: bold; font-size: 1.1rem; color: #2d3748; flex-wrap: wrap; }
+        .exp-sub { color: var(--secondary); font-weight: 600; margin: 4px 0; }
+        .exp-desc { font-size: 0.95rem; color: #4a5568; margin-top: 8px; }
+        .exp-desc ul { padding-left: 18px; margin-top: 5px; }
 
-        @media (max-width: 650px) {
-            .header { flex-direction: column; text-align: center; }
-            .social-links { justify-content: center; flex-wrap: wrap; }
-            .exp-meta { flex-direction: column; }
+        /* Lists */
+        .grid-list { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .list-item { background: var(--light); padding: 12px 18px; border-radius: 8px; border-left: 4px solid var(--secondary); font-size: 0.95rem; }
+
+        /* Buttons */
+        .btn-group { display: flex; gap: 12px; margin-top: 25px; }
+        .btn { padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-outline { border: 2px solid var(--primary); color: var(--primary); }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+
+        @media (max-width: 768px) {
+            .hero-flex { flex-direction: column; text-align: center; }
+            .grid-list { grid-template-columns: 1fr; }
+            .exp-header { flex-direction: column; }
         }
     </style>
 </head>
 <body>
 
-    <header class="header">
-        <img src="me.jpg" alt="Yan Tao, PhD" class="profile-pic">
-        <div class="header-text">
-            <h1>严涛 博士</h1>
-            <p class="tagline">Yan Tao, PhD</p>
-            <p>生物工程学者 / 纳米医学专家 / 医药咨询顾问</p>
-            
-            <div class="social-links">
-                <a href="mailto:yantao1990@gmail.com" class="btn btn-mail"><i class="fas fa-envelope"></i> Email</a>
-                <a href="https://www.linkedin.com/in/2taoyan/" target="_blank" class="btn btn-linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                <a href="https://scholar.google.com/citations?user=aQ6ycMEAAAAJ&hl=en" target="_blank" class="btn btn-scholar"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
-            </div>
-        </div>
-    </header>
-
     <main>
-        <section class="card">
-            <h2><i class="fas fa-user-graduate"></i> 个人简介 (About Me)</h2>
-            <p>严涛博士长期致力于<strong>生物材料、纳米药物递送系统及再生医学</strong>的研究。在生物医药领域拥有深厚的学术背景，擅长将前沿科研成果转化为商业洞察。目前活跃于学术研究与医药产业咨询，为早期 Biotech 项目提供技术评估与战略建议。</p>
-            <div class="interest-tags">
-                <span class="tag">纳米医学 (Nanomedicine)</span>
-                <span class="tag">药物递送 (Drug Delivery)</span>
-                <span class="tag">生物材料 (Biomaterials)</span>
-                <span class="tag">产业咨询 (Consulting)</span>
+        <section class="hero">
+            <div class="container hero-flex">
+                <img src="me.jpg" alt="严涛 博士" class="profile-pic">
+                <div class="hero-text">
+                    <span class="tag-talent">2023年入选国家级海外高层次人才计划</span>
+                    <h1>严涛 博士</h1>
+                    <p class="subtitle">Yan Tao, PhD</p>
+                    <p style="max-width: 600px;">首席科学家 | 密码子(杭州)科技有限公司<br>拥有海外 14 年学习工作经历，具备前沿科技国际视野。</p>
+                    
+                    <div class="btn-group">
+                        <a href="mailto:yantao1990@gmail.com" class="btn btn-primary"><i class="fas fa-envelope"></i> 联系我</a>
+                        <a href="https://www.linkedin.com/in/2taoyan/" target="_blank" class="btn btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                        <a href="https://scholar.google.com/citations?user=aQ6ycMEAAAAJ&hl=en" target="_blank" class="btn btn-outline"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="card">
-            <h2><i class="fas fa-briefcase"></i> 职业经历 (Experience)</h2>
-            <div class="experience-item">
-                <div class="exp-title">资深研究员 / 咨询顾问</div>
-                <div class="exp-meta"><span>Yantao Bio / 杭州</span> <span>2024 - 至今</span></div>
-                <p>专注于生物技术领域的尽职调查、项目评估及成果转化咨询。</p>
+        <section class="container">
+            <h2><i class="fas fa-file-alt"></i> 个人综述</h2>
+            <p>曾于麻省理工学院 (MIT) 与剑桥大学 (University of Cambridge) 实验室深造，<strong>师从两位诺贝尔奖得主</strong>。现任职密码子科技首席科学家，曾任美国纳斯达克上市头部生物技术公司 Illumina 高级科学家。具备基因检测技术和上下游领域专业性，致力于基于研究成果的专利授权和商业化。</p>
+            
+            <h3 style="font-size:1.1rem; margin-top:20px;">主要涉及领域：</h3>
+            <div class="grid-list">
+                <div class="list-item">化学生物学 & 生物化学</div>
+                <div class="list-item">有机化学 & 催化</div>
+                <div class="list-item">核酸化学</div>
+                <div class="list-item">多组学交叉学科</div>
             </div>
-            <div class="experience-item">
-                <div class="exp-title">博士后研究员 (Postdoctoral Researcher)</div>
-                <div class="exp-meta"><span>浙江大学 (Zhejiang University)</span> <span>2019 - 2023</span></div>
-                <p>从事智能化纳米药物平台的构建及其在重大疾病治疗中的应用研究。</p>
+        </section>
+
+        <section id="experience" class="container">
+            <h2><i class="fas fa-briefcase"></i> 工作经历</h2>
+            
+            <div class="exp-item">
+                <div class="exp-header"><span>首席科学家 (CSO), DNA 数据存储技术</span> <span>2025.11 - 至今</span></div>
+                <div class="exp-sub">密码子(杭州)科技有限公司 | 杭州</div>
+                <div class="exp-desc">
+                    引入原有国际头部测序企业的研发管理与实验规范；完成中远期研发路线规划；主导专利布局与企业技术护城河设计。
+                </div>
             </div>
-        </section>
 
-        <section class="card">
-            <h2><i class="fas fa-book"></i> 学术成就 (Academic Highlights)</h2>
-            <p>在国际主流学术期刊发表多篇高水平论文，涵盖生物工程与材料科学交叉领域。详细论文列表与引用情况请访问我的 Google Scholar。</p>
-            <ul>
-                <li>核心方向：靶向纳米载体的设计与临床转化评价。</li>
-                <li>多次受邀在行业顶尖学术会议分享研究成果。</li>
-            </ul>
-        </section>
-
-        <section class="card">
-            <h2><i class="fas fa-paper-plane"></i> 联系方式 (Contact)</h2>
-            <p>如果您对我的研究感兴趣，或有医药咨询相关的需求，欢迎通过以下方式联络：</p>
-            <p><strong>Primary Email:</strong> <a href="mailto:yantao1990@gmail.com">yantao1990@gmail.com</a></p>
-            <p><strong>Location:</strong> 杭州 · 浙江 | Hangzhou, China</p>
-        </section>
-    </main>
-
-    <footer style="text-align: center; color: #94a3b8; font-size: 0.8rem; margin-top: 40px; padding-bottom: 20px;">
-        © 2024 Yan Tao, PhD | Built with GitHub Pages
-    </footer>
-
-</body>
-</html>
+            <div class="exp-item">
+                <div class="exp-header"><span>高级科学家 / 项目负责人, 基因二代测序技术(NGS)</span> <span>
