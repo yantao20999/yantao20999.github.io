@@ -6,109 +6,170 @@
     <title>严涛 博士 | Yan Tao, PhD</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --navy: #002147; --blue: #0056b3; --gold: #c5a059; --bg: #ffffff; --text: #333; }
-        body { font-family: 'Helvetica Neue', Arial, 'PingFang SC', sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); margin: 0; padding: 0; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 40px; }
+        :root { --navy: #002147; --gold: #b8860b; --text: #2d3748; --bg: #ffffff; }
+        body { font-family: 'Inter', 'Segoe UI', 'PingFang SC', sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); margin: 0; padding: 0; transition: 0.3s; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+
+        /* Language Switcher */
+        .lang-switch { position: fixed; top: 20px; right: 40px; z-index: 1000; background: rgba(255,255,255,0.9); padding: 5px; border-radius: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .lang-btn { border: none; background: none; padding: 8px 15px; cursor: pointer; border-radius: 15px; font-weight: 600; font-size: 0.85rem; }
+        .lang-btn.active { background: var(--navy); color: white; }
 
         /* Hero Section */
-        .hero { padding: 100px 0 60px; text-align: center; background: linear-gradient(to bottom, #f9f9f9, #fff); }
-        .profile-pic { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; margin-bottom: 25px; border: 4px solid #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .talent-tag { color: var(--gold); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 10px; display: block; }
-        h1 { font-size: 3rem; color: var(--navy); margin: 0; }
-        .nobel-badge { font-style: italic; color: #666; margin-top: 10px; font-size: 1.1rem; }
+        .hero { padding: 120px 0 80px; text-align: center; background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%); }
+        .profile-pic { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 3px solid #fff; }
+        h1 { font-size: 2.8rem; color: var(--navy); margin: 0; letter-spacing: -0.5px; }
+        .credentials { max-width: 800px; margin: 20px auto; color: var(--gold); font-weight: 600; font-size: 1.1rem; line-height: 1.8; }
+        
+        /* Cooperation Area Grid */
+        .coop-section { padding: 40px 0; background: white; }
+        .coop-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 20px; }
+        .coop-card { padding: 30px 20px; background: #fdfdfd; border: 1px solid #f1f5f9; border-radius: 12px; text-align: center; transition: 0.3s; }
+        .coop-card:hover { border-color: var(--gold); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.03); }
+        .coop-card i { font-size: 1.8rem; color: var(--navy); margin-bottom: 15px; }
+        .coop-card h4 { margin: 0; font-size: 1rem; color: var(--navy); }
 
-        /* Milestone Section */
-        .milestones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin: 60px 0; }
-        .m-card { padding: 30px; border: 1px solid #eee; border-radius: 12px; transition: 0.3s; text-align: center; }
-        .m-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.05); }
-        .m-card i { font-size: 2rem; color: var(--blue); margin-bottom: 15px; }
-        .m-card h3 { color: var(--navy); margin-bottom: 10px; }
+        /* Main Pillars */
+        .milestone-strip { display: flex; justify-content: center; gap: 40px; margin: 60px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 30px 0; flex-wrap: wrap; }
+        .pillar { text-align: left; max-width: 300px; }
+        .pillar h3 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; color: #94a3b8; margin-bottom: 10px; }
+        .pillar p { margin: 0; font-weight: 500; font-size: 1rem; }
 
         /* Expertise Section */
-        .section-title { text-align: center; font-size: 2rem; color: var(--navy); margin-bottom: 40px; }
-        .expertise-box { background: var(--navy); color: white; padding: 50px; border-radius: 20px; margin-bottom: 60px; }
-        .expertise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        .exp-item h4 { color: var(--gold); margin-bottom: 15px; font-size: 1.2rem; }
+        .expertise-dark { background: var(--navy); color: white; padding: 80px 0; border-radius: 0; }
+        .exp-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+        .exp-item h2 { color: var(--gold); border-left: 3px solid var(--gold); padding-left: 15px; font-size: 1.5rem; }
 
-        /* Action Buttons */
-        .btn-group { display: flex; justify-content: center; gap: 20px; margin: 40px 0; flex-wrap: wrap; }
-        .btn { padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 600; transition: 0.3s; display: inline-flex; align-items: center; gap: 10px; }
-        .btn-primary { background: var(--navy); color: white; }
-        .btn-outline { border: 2px solid var(--navy); color: var(--navy); }
-        .btn:hover { opacity: 0.9; transform: scale(1.05); }
+        /* Buttons & Contact */
+        .btn-group { display: flex; justify-content: center; gap: 15px; margin: 40px 0; flex-wrap: wrap; }
+        .btn { padding: 12px 24px; border-radius: 30px; text-decoration: none; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 8px; border: 1px solid var(--navy); transition: 0.3s; }
+        .btn-navy { background: var(--navy); color: white; }
+        .btn-outline { color: var(--navy); }
+        .btn:hover { transform: translateY(-2px); opacity: 0.9; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 
-        footer { text-align: center; padding: 60px 0; border-top: 1px solid #eee; color: #999; }
+        footer { text-align: center; padding: 60px 0; color: #94a3b8; font-size: 0.85rem; border-top: 1px solid #f1f5f9; }
+
+        /* Language visibility */
+        [data-lang="en"] { display: none; }
 
         @media (max-width: 768px) {
-            .milestones { grid-template-columns: 1fr; }
-            .expertise-grid { grid-template-columns: 1fr; }
-            h1 { font-size: 2.2rem; }
+            .coop-grid { grid-template-columns: repeat(2, 1fr); }
+            .exp-content { grid-template-columns: 1fr; }
+            h1 { font-size: 2rem; }
+            .lang-switch { right: 20px; }
         }
     </style>
 </head>
-<body>
+<body class="lang-zh">
+
+    <div class="lang-switch">
+        <button class="lang-btn active" onclick="switchLang('zh')">中文</button>
+        <button class="lang-btn" onclick="switchLang('en')">EN</button>
+    </div>
 
     <section class="hero">
         <div class="container">
             <img src="me.jpg" alt="严涛 博士" class="profile-pic">
-            <span class="talent-tag">国家级海外高层次人才</span>
-            <h1>严涛 博士 / Yan Tao, PhD</h1>
-            <p class="nobel-badge">曾于麻省理工学院 (MIT) 与剑桥大学 (Cambridge) 深造，师从两位诺贝尔奖得主</p>
+            <h1 data-zh="严涛 博士" data-en="Yan Tao, PhD">严涛 博士</h1>
             
+            <div class="credentials">
+                <span data-zh="国家级海外高层次人才" data-en="National Global Expert (High-Level Overseas Talent)">国家级海外高层次人才</span><br>
+                <span data-zh="曾于麻省理工学院 (MIT) 与剑桥大学 (Cambridge) 深造，师从两位诺贝尔奖得主" 
+                      data-en="Alumnus of MIT & Cambridge, Mentored by Two Nobel Laureates">
+                      曾于麻省理工学院 (MIT) 与剑桥大学 (Cambridge) 深造，师从两位诺贝尔奖得主
+                </span>
+            </div>
+
             <div class="btn-group">
-                <a href="mailto:yantao1990@gmail.com" class="btn btn-primary"><i class="fas fa-envelope"></i> Email</a>
+                <a href="mailto:yantao1990@gmail.com" class="btn btn-navy"><i class="fas fa-envelope"></i> <span data-zh="邮件联系" data-en="Email Me">邮件联系</span></a>
                 <a href="https://www.linkedin.com/in/2taoyan/" target="_blank" class="btn btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                <a href="https://scholar.google.com/citations?user=aQ6ycMEAAAAJ" target="_blank" class="btn btn-outline"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
-                <a href="Resume_YanTao.pdf" target="_blank" class="btn btn-outline" style="border-color: #c5a059; color: #c5a059;"><i class="fas fa-file-pdf"></i> 下载完整简历 (CV)</a>
+                <a href="https://scholar.google.com/citations?user=aQ6ycMEAAAAJ" target="_blank" class="btn btn-outline"><i class="fas fa-graduation-cap"></i> Scholar</a>
+                <div class="btn btn-outline" title="WeChat ID: yantao20999"><i class="fab fa-weixin"></i> yantao20999</div>
+                <a href="Resume_YanTao.pdf" target="_blank" class="btn btn-outline" style="border-color:var(--gold); color:var(--gold)"><i class="fas fa-file-pdf"></i> <span data-zh="简历下载" data-en="Download CV">简历下载</span></a>
             </div>
         </div>
     </section>
 
-    <div class="container">
-        <div class="milestones">
-            <div class="m-card">
-                <i class="fas fa-university"></i>
-                <h3>MIT & Cambridge</h3>
-                <p>在麻省理工与剑桥大学实验室担任研究员，师从诺奖得主 R. Schrock 与 B. Feringa，并在 Shankar Balasubramanian 爵士实验室主导核心技术开发。</p>
+    <div class="container coop-section">
+        <h3 style="text-align:center; color:#94a3b8; font-size:0.9rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:30px;" data-zh="主要合作方向" data-en="Main Cooperation Areas">主要合作方向</h3>
+        <div class="coop-grid">
+            <div class="coop-card">
+                <i class="fas fa-vial"></i>
+                <h4 data-zh="学术成果转化" data-en="Tech Transfer">学术成果转化</h4>
             </div>
-            <div class="m-card">
-                <i class="fas fa-dna"></i>
-                <h3>Illumina (因美纳)</h3>
-                <p>作为高级科学家/项目负责人，主导 NGS 边合成边测序技术迭代、荧光染料研发及全球新兴技术趋势评估。</p>
-            </div>
-            <div class="m-card">
+            <div class="coop-card">
                 <i class="fas fa-rocket"></i>
-                <h3>密码子科技</h3>
-                <p>现任首席科学家 (CSO)，引领 DNA 数据存储技术的工程化与商业化落地，构建企业技术护城河。</p>
+                <h4 data-zh="技术创业" data-en="Entrepreneurship">技术创业</h4>
+            </div>
+            <div class="coop-card">
+                <i class="fas fa-handshake"></i>
+                <h4 data-zh="生物技术咨询" data-en="Biotech Consulting">生物技术咨询</h4>
+            </div>
+            <div class="coop-card">
+                <i class="fas fa-user-graduate"></i>
+                <h4 data-zh="教育咨询" data-en="Educational Advisory">教育咨询</h4>
             </div>
         </div>
-
-        <section class="expertise-box">
-            <div class="expertise-grid">
-                <div class="exp-item">
-                    <h4>技术背景 / Technical Domain</h4>
-                    <p>深度交叉化学生物学、有机化学、催化、核酸化学及生物化学。长期致力于基因测序技术、多组学及分子检测技术的前沿创新。</p>
-                </div>
-                <div class="exp-item">
-                    <h4>核心使命 / Current Focus</h4>
-                    <p>专注于<strong>学术技术转化、硬科技创业及技术咨询</strong>。利用 14 年海外研发积累，协助科研成果走向市场，并为大健康、抗衰老及癌症早筛领域提供商业决策支持。</p>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2 class="section-title">研究兴趣</h2>
-            <div style="text-align: center; color: #666; font-size: 1.1rem; max-width: 800px; margin: 0 auto 40px;">
-                化学生物学 · 生物物理学 · 分子检测 · 基因测序 · 多组学 · 癌症早筛 · 人工智能+大健康 · 抗衰老 · 技术商业化
-            </div>
-        </section>
     </div>
+
+    <div class="container milestone-strip">
+        <div class="pillar">
+            <h3 data-zh="科研履历" data-en="Academic Roots">科研履历</h3>
+            <p data-zh="MIT & 剑桥大学研究员" data-en="Research Fellow at MIT & Cambridge">MIT & 剑桥大学研究员</p>
+        </div>
+        <div class="pillar">
+            <h3 data-zh="产业积淀" data-en="Industry Background">产业积淀</h3>
+            <p data-zh="前 Illumina (因美纳) 高级科学家" data-en="Former Sr. Scientist at Illumina">前 Illumina (因美纳) 高级科学家</p>
+        </div>
+        <div class="pillar">
+            <h3 data-zh="当前角色" data-en="Current Role">当前角色</h3>
+            <p data-zh="首席科学家 (CSO) | Biotech 初创公司" data-en="Chief Scientific Officer | Biotech Start-up">首席科学家 (CSO) | Biotech 初创公司</p>
+        </div>
+    </div>
+
+    <section class="expertise-dark">
+        <div class="container exp-content">
+            <div class="exp-item">
+                <h2 data-zh="技术背景" data-en="Technical Background">技术背景</h2>
+                <p style="opacity:0.9" data-zh="深度交叉化学生物学、有机化学、催化及核酸化学领域。致力于基因测序技术迭代、多组学及分子检测前沿创新。" 
+                   data-en="Expertise in Chemical Biology, Organic Chemistry, Catalysis, and Nucleic Acid Chemistry. Dedicated to NGS innovation, Multi-omics, and molecular diagnostic technologies.">
+                   深度交叉化学生物学、有机化学、催化及核酸化学领域。致力于基因测序技术迭代、多组学及分子检测前沿创新。
+                </p>
+            </div>
+            <div class="exp-item">
+                <h2 data-zh="商业转化" data-en="Commercialization">商业转化</h2>
+                <p style="opacity:0.9" data-zh="利用 14 年海外研发与管理经验，为早期硬科技项目提供从实验室到市场的战略咨询，并专注于大健康、癌症早筛及抗衰老领域的商业化探索。" 
+                   data-en="Leveraging 14 years of overseas R&D experience to provide strategic advisory for deep-tech projects, focusing on commercialization in healthcare, early cancer screening, and anti-aging sectors.">
+                   利用 14 年海外研发与管理经验，为早期硬科技项目提供从实验室到市场的战略咨询，并专注于大健康、癌症早筛及抗衰老领域的商业化探索。
+                </p>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <div class="container">
-            <p>© 2026 Yan Tao, PhD. 致力于基于研究成果的专利授权与商业化落地。</p>
+            <p data-zh="© 2026 严涛 博士 | 致力于基于研究成果的专利授权与商业化落地" 
+               data-en="© 2026 Yan Tao, PhD | Dedicated to IP Licensing and Technology Commercialization">
+               © 2026 严涛 博士 | 致力于基于研究成果的专利授权与商业化落地
+            </p>
         </div>
     </footer>
 
+    <script>
+        function switchLang(lang) {
+            const zhElements = document.querySelectorAll('[data-zh]');
+            const enElements = document.querySelectorAll('[data-en]');
+            const btns = document.querySelectorAll('.lang-btn');
+
+            btns.forEach(btn => btn.classList.remove('active'));
+            if (lang === 'zh') {
+                zhElements.forEach(el => el.textContent = el.getAttribute('data-zh'));
+                btns[0].classList.add('active');
+            } else {
+                zhElements.forEach(el => el.textContent = el.getAttribute('data-en'));
+                btns[1].classList.add('active');
+            }
+        }
+    </script>
 </body>
 </html>
