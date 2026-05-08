@@ -43,7 +43,7 @@
 
         /* Buttons & Contact */
         .btn-group { display: flex; justify-content: center; gap: 15px; margin: 40px 0; flex-wrap: wrap; }
-        .btn { padding: 12px 24px; border-radius: 30px; text-decoration: none; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 8px; border: 1px solid var(--navy); transition: 0.3s; }
+        .btn { padding: 12px 24px; border-radius: 30px; text-decoration: none; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 8px; border: 1px solid var(--navy); transition: 0.3s; cursor: pointer; }
         .btn-navy { background: var(--navy); color: white; }
         .btn-outline { color: var(--navy); }
         .btn:hover { transform: translateY(-2px); opacity: 0.9; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
@@ -86,7 +86,9 @@
                 <a href="https://www.linkedin.com/in/2taoyan/" target="_blank" class="btn btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
                 <a href="https://scholar.google.com/citations?user=aQ6ycMEAAAAJ" target="_blank" class="btn btn-outline"><i class="fas fa-graduation-cap"></i> Scholar</a>
                 <div class="btn btn-outline" title="WeChat ID: yantaobio"><i class="fab fa-weixin"></i> yantaobio</div>
-                <a href="Resume_YanTao.pdf" target="_blank" class="btn btn-outline" style="border-color:var(--gold); color:var(--gold)"><i class="fas fa-file-pdf"></i> <span data-zh="简历下载" data-en="Download CV">简历下载</span></a>
+                <div onclick="protectedDownload()" class="btn btn-outline" style="border-color:var(--gold); color:var(--gold)">
+                    <i class="fas fa-file-pdf"></i> <span data-zh="简历下载" data-en="Download CV">简历下载</span>
+                </div>
             </div>
         </div>
     </section>
@@ -104,7 +106,7 @@
             </div>
             <div class="coop-card">
                 <i class="fas fa-handshake"></i>
-                <h4 data-zh="生物技术咨询" data-en="Biotech Consulting">生物技术咨询</h4>
+                <h4 data-zh="化学&生物技术咨询" data-en="Chemical & Biotech Consulting">化学&生物技术咨询</h4>
             </div>
             <div class="coop-card">
                 <i class="fas fa-user-graduate"></i>
@@ -120,57 +122,8 @@
         </div>
         <div class="pillar">
             <h3 data-zh="产业积淀" data-en="Industry Background">产业积淀</h3>
-            <p data-zh="前 Illumina (因美纳) 高级科学家" data-en="Former Sr. Scientist at Illumina">前 Illumina (因美纳) 高级科学家</p>
+            <p data-zh="Illumina (因美纳) 高级科学家&项目负责人" data-en="Sr. Scientist & Project Leader at Illumina">Illumina (因美纳) 高级科学家&项目负责人</p>
         </div>
         <div class="pillar">
             <h3 data-zh="当前角色" data-en="Current Role">当前角色</h3>
-            <p data-zh="首席科学家 (CSO) | Biotech 初创公司" data-en="Chief Scientific Officer | Biotech Start-up">首席科学家 (CSO) | Biotech 初创公司</p>
-        </div>
-    </div>
-
-    <section class="expertise-dark">
-        <div class="container exp-content">
-            <div class="exp-item">
-                <h2 data-zh="技术背景" data-en="Technical Background">技术背景</h2>
-                <p style="opacity:0.9" data-zh="深度交叉化学生物学、有机化学、催化及核酸化学领域。致力于基因测序技术迭代、多组学及分子检测前沿创新。" 
-                   data-en="Expertise in Chemical Biology, Organic Chemistry, Catalysis, and Nucleic Acid Chemistry. Dedicated to NGS innovation, Multi-omics, and molecular diagnostic technologies.">
-                   深度交叉化学生物学、有机化学、催化及核酸化学领域。致力于基因测序技术迭代、多组学及分子检测前沿创新。
-                </p>
-            </div>
-            <div class="exp-item">
-                <h2 data-zh="商业转化" data-en="Commercialization">商业转化</h2>
-                <p style="opacity:0.9" data-zh="利用 14 年海外研发与管理经验，为早期硬科技项目提供从实验室到市场的战略咨询，并专注于大健康、癌症早筛及抗衰老领域的商业化探索。" 
-                   data-en="Leveraging 14 years of overseas R&D experience to provide strategic advisory for deep-tech projects, focusing on commercialization in healthcare, early cancer screening, and anti-aging sectors.">
-                   利用 14 年海外研发与管理经验，为早期硬科技项目提供从实验室到市场的战略咨询，并专注于大健康、癌症早筛及抗衰老领域的商业化探索。
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p data-zh="© 2026 严涛 博士 | 致力于基于研究成果的专利授权与商业化落地" 
-               data-en="© 2026 Yan Tao, PhD | Dedicated to IP Licensing and Technology Commercialization">
-               © 2026 严涛 博士 | 致力于基于研究成果的专利授权与商业化落地
-            </p>
-        </div>
-    </footer>
-
-    <script>
-        function switchLang(lang) {
-            const zhElements = document.querySelectorAll('[data-zh]');
-            const enElements = document.querySelectorAll('[data-en]');
-            const btns = document.querySelectorAll('.lang-btn');
-
-            btns.forEach(btn => btn.classList.remove('active'));
-            if (lang === 'zh') {
-                zhElements.forEach(el => el.textContent = el.getAttribute('data-zh'));
-                btns[0].classList.add('active');
-            } else {
-                zhElements.forEach(el => el.textContent = el.getAttribute('data-en'));
-                btns[1].classList.add('active');
-            }
-        }
-    </script>
-</body>
-</html>
+            <p data-zh="首席科学家 (CSO) | Biotech 初创公司
