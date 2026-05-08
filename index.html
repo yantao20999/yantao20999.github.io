@@ -32,9 +32,9 @@
 
         /* Main Pillars */
         .milestone-strip { display: flex; justify-content: center; gap: 40px; margin: 60px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 30px 0; flex-wrap: wrap; }
-        .pillar { text-align: left; max-width: 300px; }
+        .pillar { text-align: left; max-width: 300px; min-width: 200px; }
         .pillar h3 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; color: #94a3b8; margin-bottom: 10px; }
-        .pillar p { margin: 0; font-weight: 500; font-size: 1rem; }
+        .pillar p { margin: 0; font-weight: 500; font-size: 1rem; color: var(--navy); }
 
         /* Expertise Section */
         .expertise-dark { background: var(--navy); color: white; padding: 80px 0; border-radius: 0; }
@@ -43,87 +43,183 @@
 
         /* Buttons & Contact */
         .btn-group { display: flex; justify-content: center; gap: 15px; margin: 40px 0; flex-wrap: wrap; }
-        .btn { padding: 12px 24px; border-radius: 30px; text-decoration: none; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 8px; border: 1px solid var(--navy); transition: 0.3s; cursor: pointer; }
+        .btn { padding: 12px 24px; border-radius: 30px; text-decoration: none; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 8px; border: 1px solid var(--navy); transition: 0.3s; cursor: pointer; background: white; }
         .btn-navy { background: var(--navy); color: white; }
         .btn-outline { color: var(--navy); }
         .btn:hover { transform: translateY(-2px); opacity: 0.9; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 
         footer { text-align: center; padding: 60px 0; color: #94a3b8; font-size: 0.85rem; border-top: 1px solid #f1f5f9; }
 
-        /* Language visibility */
-        [data-lang="en"] { display: none; }
-
         @media (max-width: 768px) {
             .coop-grid { grid-template-columns: repeat(2, 1fr); }
             .exp-content { grid-template-columns: 1fr; }
             h1 { font-size: 2rem; }
             .lang-switch { right: 20px; }
+            .milestone-strip { flex-direction: column; align-items: center; text-align: center; gap: 25px; }
+            .pillar { text-align: center; }
         }
     </style>
 </head>
 <body class="lang-zh">
 
     <div class="lang-switch">
-        <button class="lang-btn active" onclick="switchLang('zh')">中文</button>
-        <button class="lang-btn" onclick="switchLang('en')">EN</button>
+        <button id="btn-zh" class="lang-btn active" onclick="switchLang('zh')">中文</button>
+        <button id="btn-en" class="lang-btn" onclick="switchLang('en')">EN</button>
     </div>
 
     <section class="hero">
         <div class="container">
             <img src="me.jpg" alt="严涛 博士" class="profile-pic">
-            <h1 data-zh="严涛 博士" data-en="Yan Tao, PhD">严涛 博士</h1>
+            <h1 id="title-name">严涛 博士</h1>
             
-            <div class="credentials">
-                <span data-zh="国家级海外高层次人才" data-en="National Global Expert (High-Level Overseas Talent)">国家级海外高层次人才</span><br>
-                <span data-zh="曾于麻省理工学院 (MIT) 与剑桥大学 (Cambridge) 深造，师从两位诺贝尔奖得主" 
-                      data-en="Alumnus of MIT & Cambridge, Mentored by Two Nobel Laureates">
-                      曾于麻省理工学院 (MIT) 与剑桥大学 (Cambridge) 深造，师从两位诺贝尔奖得主
-                </span>
+            <div class="credentials" id="hero-creds">
+                <span>国家级海外高层次人才</span><br>
+                <span>曾于麻省理工学院 (MIT) 与剑桥大学 (Cambridge) 深造，师从两位诺贝尔奖得主</span>
             </div>
 
             <div class="btn-group">
-                <a href="mailto:yantao1990@gmail.com" class="btn btn-navy"><i class="fas fa-envelope"></i> <span data-zh="邮件联系" data-en="Email Me">邮件联系</span></a>
+                <a href="mailto:yantao1990@gmail.com" class="btn btn-navy"><i class="fas fa-envelope"></i> <span class="t-email">邮件联系</span></a>
                 <a href="https://www.linkedin.com/in/2taoyan/" target="_blank" class="btn btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
                 <a href="https://scholar.google.com/citations?user=aQ6ycMEAAAAJ" target="_blank" class="btn btn-outline"><i class="fas fa-graduation-cap"></i> Scholar</a>
                 <div class="btn btn-outline" title="WeChat ID: yantaobio"><i class="fab fa-weixin"></i> yantaobio</div>
-                <div onclick="protectedDownload()" class="btn btn-outline" style="border-color:var(--gold); color:var(--gold)">
-                    <i class="fas fa-file-pdf"></i> <span data-zh="简历下载" data-en="Download CV">简历下载</span>
-                </div>
+                
+                <button onclick="handleDownload()" class="btn btn-outline" style="border-color:var(--gold); color:var(--gold)">
+                    <i class="fas fa-file-pdf"></i> <span class="t-download">简历下载</span>
+                </button>
             </div>
         </div>
     </section>
 
     <div class="container coop-section">
-        <h3 style="text-align:center; color:#94a3b8; font-size:0.9rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:30px;" data-zh="主要合作方向" data-en="Main Cooperation Areas">主要合作方向</h3>
+        <h3 id="coop-title" style="text-align:center; color:#94a3b8; font-size:0.9rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:30px;">主要合作方向</h3>
         <div class="coop-grid">
             <div class="coop-card">
                 <i class="fas fa-vial"></i>
-                <h4 data-zh="学术成果转化" data-en="Tech Transfer">学术成果转化</h4>
+                <h4 class="t-coop1">学术成果转化</h4>
             </div>
             <div class="coop-card">
                 <i class="fas fa-rocket"></i>
-                <h4 data-zh="技术创业" data-en="Entrepreneurship">技术创业</h4>
+                <h4 class="t-coop2">技术创业</h4>
             </div>
             <div class="coop-card">
                 <i class="fas fa-handshake"></i>
-                <h4 data-zh="化学&生物技术咨询" data-en="Chemical & Biotech Consulting">化学&生物技术咨询</h4>
+                <h4 class="t-coop3">化学&生物技术咨询</h4>
             </div>
             <div class="coop-card">
                 <i class="fas fa-user-graduate"></i>
-                <h4 data-zh="教育咨询" data-en="Educational Advisory">教育咨询</h4>
+                <h4 class="t-coop4">教育咨询</h4>
             </div>
         </div>
     </div>
 
     <div class="container milestone-strip">
         <div class="pillar">
-            <h3 data-zh="科研履历" data-en="Academic Roots">科研履历</h3>
-            <p data-zh="MIT & 剑桥大学研究员" data-en="Research Fellow at MIT & Cambridge">MIT & 剑桥大学研究员</p>
+            <h3 class="t-pill1-h">科研履历</h3>
+            <p class="t-pill1-p">MIT & 剑桥大学研究员</p>
         </div>
         <div class="pillar">
-            <h3 data-zh="产业积淀" data-en="Industry Background">产业积淀</h3>
-            <p data-zh="Illumina (因美纳) 高级科学家&项目负责人" data-en="Sr. Scientist & Project Leader at Illumina">Illumina (因美纳) 高级科学家&项目负责人</p>
+            <h3 class="t-pill2-h">产业积淀</h3>
+            <p class="t-pill2-p">Illumina (因美纳) 高级科学家&项目负责人</p>
         </div>
         <div class="pillar">
-            <h3 data-zh="当前角色" data-en="Current Role">当前角色</h3>
-            <p data-zh="首席科学家 (CSO) | Biotech 初创公司
+            <h3 class="t-pill3-h">当前角色</h3>
+            <p class="t-pill3-p">首席科学家 (CSO) | Biotech 初创公司</p>
+        </div>
+    </div>
+
+    <section class="expertise-dark">
+        <div class="container exp-content">
+            <div class="exp-item">
+                <h2 class="t-exp1-h">技术背景</h2>
+                <p id="t-exp1-p" style="opacity:0.9">深度交叉化学生物学、有机化学、催化及核酸化学领域。致力于基因测序技术迭代、多组学及分子检测前沿创新。</p>
+            </div>
+            <div class="exp-item">
+                <h2 class="t-exp2-h">商业转化</h2>
+                <p id="t-exp2-p" style="opacity:0.9">利用 14 年海外研发与管理经验，为早期硬科技项目提供从实验室到市场的战略咨询，并专注于大健康、癌症早筛及抗衰老领域的商业化探索。</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p id="footer-text">© 2026 严涛 博士 | 致力于基于研究成果的专利授权与商业化落地</p>
+        </div>
+    </footer>
+
+    <script>
+        const content = {
+            zh: {
+                name: "严涛 博士",
+                creds: "<span>国家级海外高层次人才</span><br><span>曾于麻省理工学院 (MIT) 与剑桥大学 (Cambridge) 深造，师从两位诺贝尔奖得主</span>",
+                email: "邮件联系",
+                download: "简历下载",
+                coopTitle: "主要合作方向",
+                coop1: "学术成果转化",
+                coop2: "技术创业",
+                coop3: "化学&生物技术咨询",
+                coop4: "教育咨询",
+                pill1h: "科研履历", pill1p: "MIT & 剑桥大学研究员",
+                pill2h: "产业积淀", pill2p: "Illumina (因美纳) 高级科学家&项目负责人",
+                pill3h: "当前角色", pill3p: "首席科学家 (CSO) | Biotech 初创公司",
+                exp1h: "技术背景", exp1p: "深度交叉化学生物学、有机化学、催化及核酸化学领域。致力于基因测序技术迭代、多组学及分子检测前沿创新。",
+                exp2h: "商业转化", exp2p: "利用 14 年海外研发与管理经验，为早期硬科技项目提供从实验室到市场的战略咨询，并专注于大健康、癌症早筛及抗衰老领域的商业化探索。",
+                footer: "© 2026 严涛 博士 | 致力于基于研究成果的专利授权与商业化落地"
+            },
+            en: {
+                name: "Yan Tao, PhD",
+                creds: "<span>National Global Expert</span><br><span>Alumnus of MIT & Cambridge, Mentored by Two Nobel Laureates</span>",
+                email: "Email Me",
+                download: "Download CV",
+                coopTitle: "Main Cooperation Areas",
+                coop1: "Tech Transfer",
+                coop2: "Entrepreneurship",
+                coop3: "Chemical & Biotech Consulting",
+                coop4: "Educational Advisory",
+                pill1h: "Academic Roots", pill1p: "Research Fellow at MIT & Cambridge",
+                pill2h: "Industry Background", pill2p: "Sr. Scientist & Project Leader at Illumina",
+                pill3h: "Current Role", pill3p: "Chief Scientific Officer | Biotech Start-up",
+                exp1h: "Technical Background", exp1p: "Expertise in Chemical Biology, Organic Chemistry, Catalysis, and Nucleic Acid Chemistry. Dedicated to NGS innovation, Multi-omics, and molecular diagnostics.",
+                exp2h: "Commercialization", exp2p: "Leveraging 14 years of R&D experience to provide strategic advisory for deep-tech projects, focusing on healthcare, cancer screening, and anti-aging sectors.",
+                footer: "© 2026 Yan Tao, PhD | Dedicated to IP Licensing and Technology Commercialization"
+            }
+        };
+
+        function switchLang(lang) {
+            const data = content[lang];
+            document.getElementById('title-name').textContent = data.name;
+            document.getElementById('hero-creds').innerHTML = data.creds;
+            document.querySelector('.t-email').textContent = data.email;
+            document.querySelector('.t-download').textContent = data.download;
+            document.getElementById('coop-title').textContent = data.coopTitle;
+            document.querySelector('.t-coop1').textContent = data.coop1;
+            document.querySelector('.t-coop2').textContent = data.coop2;
+            document.querySelector('.t-coop3').textContent = data.coop3;
+            document.querySelector('.t-coop4').textContent = data.coop4;
+            document.querySelector('.t-pill1-h').textContent = data.pill1h;
+            document.querySelector('.t-pill1-p').textContent = data.pill1p;
+            document.querySelector('.t-pill2-h').textContent = data.pill2h;
+            document.querySelector('.t-pill2-p').textContent = data.pill2p;
+            document.querySelector('.t-pill3-h').textContent = data.pill3h;
+            document.querySelector('.t-pill3-p').textContent = data.pill3p;
+            document.querySelector('.t-exp1-h').textContent = data.exp1h;
+            document.getElementById('t-exp1-p').textContent = data.exp1p;
+            document.querySelector('.t-exp2-h').textContent = data.exp2h;
+            document.getElementById('t-exp2-p').textContent = data.exp2p;
+            document.getElementById('footer-text').textContent = data.footer;
+
+            document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        }
+
+        function handleDownload() {
+            const pass = prompt("Contact Tao for the password");
+            if (pass === "yantaobio") {
+                // 使用 location.href 触发下载，更稳定
+                window.location.href = "Resume_YanTao.pdf";
+            } else if (pass !== null) {
+                alert("Incorrect password. Please contact Tao.");
+            }
+        }
+    </script>
+</body>
+</html>
