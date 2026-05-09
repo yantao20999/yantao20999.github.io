@@ -6,57 +6,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>严涛 博士 | Yan Tao, PhD</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --navy: #002147; --gold: #b8860b; --text: #2d3748; --bg: #ffffff; }
-        body { font-family: 'Inter', 'Segoe UI', 'PingFang SC', sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); margin: 0; padding: 0; transition: 0.3s; }
+        :root { 
+            --navy: #0a192f; /* 更深邃的午夜蓝 */
+            --gold: #c5a880; /* 高级香槟金 */
+            --text-main: #333333; 
+            --text-light: #666666;
+            --bg-page: #fcfcfc; 
+            --white: #ffffff;
+        }
+        body { font-family: 'Inter', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; line-height: 1.7; color: var(--text-main); background: var(--bg-page); margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+        
+        /* 独立衬线字体用于名字和核心标题 */
+        h1, .serif-title { font-family: 'Playfair Display', serif; }
 
-        /* Language Switcher */
-        .lang-switch { position: fixed; top: 20px; right: 40px; z-index: 1000; background: rgba(255,255,255,0.9); padding: 5px; border-radius: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .lang-btn { border: none; background: none; padding: 8px 15px; cursor: pointer; border-radius: 15px; font-weight: 600; font-size: 0.85rem; }
-        .lang-btn.active { background: var(--navy); color: white; }
+        /* 高级悬浮语言切换器 */
+        .lang-switch { position: fixed; top: 30px; right: 40px; z-index: 1000; background: rgba(255,255,255,0.75); backdrop-filter: blur(10px); padding: 4px; border-radius: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.05); display: flex; gap: 2px; }
+        .lang-btn { border: none; background: transparent; padding: 8px 18px; cursor: pointer; border-radius: 25px; font-weight: 500; font-size: 0.85rem; color: var(--text-light); transition: all 0.3s ease; }
+        .lang-btn.active { background: var(--navy); color: var(--white); box-shadow: 0 2px 8px rgba(10,25,47,0.2); }
 
         /* Hero Section */
-        .hero { padding: 120px 0 80px; text-align: center; background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%); }
-        .profile-pic { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 3px solid #fff; }
-        h1 { font-size: 2.8rem; color: var(--navy); margin: 0; letter-spacing: -0.5px; }
-        .credentials { max-width: 800px; margin: 20px auto; color: var(--gold); font-weight: 600; font-size: 1.1rem; line-height: 1.8; }
+        .hero { padding: 140px 0 90px; text-align: center; background: radial-gradient(circle at center, #ffffff 0%, #f5f7fa 100%); }
+        .profile-pic { width: 170px; height: 170px; border-radius: 50%; object-fit: cover; margin-bottom: 30px; box-shadow: 0 15px 35px rgba(10,25,47,0.1); border: 4px solid var(--white); transition: transform 0.5s ease; }
+        .profile-pic:hover { transform: scale(1.03); }
+        h1 { font-size: 3.2rem; color: var(--navy); margin: 0; letter-spacing: -0.5px; }
+        .credentials { max-width: 750px; margin: 25px auto; color: var(--gold); font-weight: 500; font-size: 1.15rem; line-height: 1.8; letter-spacing: 0.5px; }
         
-        /* Cooperation Area Grid */
-        .coop-section { padding: 40px 0; background: white; }
-        .coop-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 20px; }
-        .coop-card { padding: 30px 20px; background: #fdfdfd; border: 1px solid #f1f5f9; border-radius: 12px; text-align: center; transition: 0.3s; }
-        .coop-card:hover { border-color: var(--gold); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.03); }
-        .coop-card i { font-size: 1.8rem; color: var(--navy); margin-bottom: 15px; }
-        .coop-card h4 { margin: 0; font-size: 1rem; color: var(--navy); }
+        /* Buttons - 极致精简与优雅 */
+        .btn-group { display: flex; justify-content: center; gap: 15px; margin: 45px 0; flex-wrap: wrap; }
+        .btn { padding: 12px 28px; border-radius: 40px; text-decoration: none; font-size: 0.9rem; font-weight: 500; display: flex; align-items: center; gap: 10px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; border: 1px solid transparent; }
+        .btn-navy { background: var(--navy); color: var(--white); box-shadow: 0 8px 20px rgba(10,25,47,0.15); }
+        .btn-navy:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(10,25,47,0.25); }
+        .btn-outline { background: var(--white); color: var(--navy); border: 1px solid rgba(10,25,47,0.1); }
+        .btn-outline:hover { border-color: var(--navy); background: var(--navy); color: var(--white); }
+        .btn-gold { background: var(--white); color: var(--gold); border: 1px solid var(--gold); }
+        .btn-gold:hover { background: var(--gold); color: var(--white); box-shadow: 0 8px 20px rgba(197,168,128,0.25); border-color: var(--gold); }
 
-        /* Main Pillars */
-        .milestone-strip { display: flex; justify-content: center; gap: 40px; margin: 60px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 30px 0; flex-wrap: wrap; }
-        .pillar { text-align: left; max-width: 300px; min-width: 200px; }
-        .pillar h3 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; color: #94a3b8; margin-bottom: 10px; }
-        .pillar p { margin: 0; font-weight: 500; font-size: 1rem; color: var(--navy); }
+        /* Cooperation Area Grid - 去除边框，增加柔和阴影 */
+        .coop-section { padding: 60px 0 80px; background: var(--bg-page); }
+        .section-label { text-align: center; color: var(--text-light); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 40px; font-weight: 600; }
+        .coop-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
+        .coop-card { padding: 40px 20px; background: var(--white); border-radius: 16px; text-align: center; transition: all 0.4s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+        .coop-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(197,168,128,0.1); }
+        .coop-card i { font-size: 2rem; color: var(--gold); margin-bottom: 20px; transition: 0.3s; }
+        .coop-card:hover i { transform: scale(1.1); }
+        .coop-card h4 { margin: 0; font-size: 1.05rem; color: var(--navy); font-weight: 600; }
 
-        /* Expertise Section */
-        .expertise-dark { background: var(--navy); color: white; padding: 80px 0; border-radius: 0; }
-        .exp-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
-        .exp-item h2 { color: var(--gold); border-left: 3px solid var(--gold); padding-left: 15px; font-size: 1.5rem; }
+        /* Main Pillars - 增加质感的分割线 */
+        .milestone-strip { display: flex; justify-content: space-between; margin: 0 0 80px 0; border-top: 1px solid rgba(10,25,47,0.06); border-bottom: 1px solid rgba(10,25,47,0.06); padding: 50px 0; }
+        .pillar { flex: 1; text-align: center; padding: 0 30px; position: relative; }
+        .pillar:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 10%; height: 80%; width: 1px; background: rgba(10,25,47,0.06); }
+        .pillar h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-light); margin-bottom: 15px; font-weight: 600; }
+        .pillar p { margin: 0; font-weight: 500; font-size: 1.05rem; color: var(--navy); line-height: 1.5; }
 
-        /* Buttons & Contact */
-        .btn-group { display: flex; justify-content: center; gap: 15px; margin: 40px 0; flex-wrap: wrap; }
-        .btn { padding: 12px 24px; border-radius: 30px; text-decoration: none; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 8px; border: 1px solid var(--navy); transition: 0.3s; cursor: pointer; background: white; }
-        .btn-navy { background: var(--navy); color: white; }
-        .btn-outline { color: var(--navy); }
-        .btn:hover { transform: translateY(-2px); opacity: 0.9; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        /* Expertise Section - 沉稳的深色块 */
+        .expertise-dark { background: var(--navy); color: var(--white); padding: 100px 0; }
+        .exp-content { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+        .exp-item h2 { color: var(--gold); font-size: 1.8rem; margin-top: 0; margin-bottom: 25px; position: relative; }
+        .exp-item h2::after { content: ''; display: block; width: 40px; height: 2px; background: var(--gold); margin-top: 20px; }
+        .exp-item p { color: rgba(255,255,255,0.85); font-size: 1.05rem; font-weight: 300; line-height: 1.8; margin: 0; }
 
-        footer { text-align: center; padding: 60px 0; color: #94a3b8; font-size: 0.85rem; border-top: 1px solid #f1f5f9; }
+        footer { text-align: center; padding: 50px 0; color: var(--text-light); font-size: 0.85rem; background: var(--white); }
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .coop-grid { grid-template-columns: repeat(2, 1fr); }
-            .exp-content { grid-template-columns: 1fr; }
-            h1 { font-size: 2rem; }
-            .lang-switch { right: 20px; }
-            .milestone-strip { flex-direction: column; align-items: center; text-align: center; gap: 25px; }
-            .pillar { text-align: center; }
+            .milestone-strip { flex-direction: column; gap: 40px; padding: 40px 0; }
+            .pillar:not(:last-child)::after { display: none; }
+            .exp-content { grid-template-columns: 1fr; gap: 50px; }
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 2.4rem; }
+            .lang-switch { right: 20px; top: 20px; }
+            .hero { padding: 120px 0 60px; }
+            .btn-group { flex-direction: column; padding: 0 20px; }
+            .btn { justify-content: center; }
         }
     </style>
 </head>
@@ -74,16 +99,16 @@
             
             <div class="credentials" id="hero-creds">
                 <span>国家级海外高层次人才</span><br>
-                <span>曾于麻省理工学院 (MIT) 与剑桥大学 (Cambridge) 深造，师从两位诺贝尔奖得主</span>
+                <span style="font-size: 0.95em; opacity: 0.9; color: var(--text-light); display: inline-block; margin-top: 5px;">曾于麻省理工学院 (MIT) 与剑桥大学 (Cambridge) 深造，师从两位诺贝尔奖得主</span>
             </div>
 
             <div class="btn-group">
                 <a href="mailto:yantao1990@gmail.com" class="btn btn-navy"><i class="fas fa-envelope"></i> <span class="t-email">邮件联系</span></a>
                 <a href="https://www.linkedin.com/in/2taoyan/" target="_blank" class="btn btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
                 <a href="https://scholar.google.com/citations?user=aQ6ycMEAAAAJ" target="_blank" class="btn btn-outline"><i class="fas fa-graduation-cap"></i> Scholar</a>
-                <div class="btn btn-outline" title="WeChat ID: yantaobio"><i class="fab fa-weixin"></i> yantaobio</div>
+                <div class="btn btn-outline" title="WeChat ID: yantaobio" style="cursor: default;"><i class="fab fa-weixin"></i> yantaobio</div>
                 
-                <button onclick="handleDownload()" class="btn btn-outline" style="border-color:var(--gold); color:var(--gold)">
+                <button onclick="handleDownload()" class="btn btn-gold">
                     <i class="fas fa-file-pdf"></i> <span class="t-download">简历下载</span>
                 </button>
             </div>
@@ -91,22 +116,22 @@
     </section>
 
     <div class="container coop-section">
-        <h3 id="coop-title" style="text-align:center; color:#94a3b8; font-size:0.9rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:30px;">主要合作方向</h3>
+        <div class="section-label" id="coop-title">主要合作方向</div>
         <div class="coop-grid">
             <div class="coop-card">
-                <i class="fas fa-vial"></i>
+                <i class="fas fa-flask"></i>
                 <h4 class="t-coop1">学术成果转化</h4>
             </div>
             <div class="coop-card">
-                <i class="fas fa-rocket"></i>
+                <i class="fas fa-chart-line"></i>
                 <h4 class="t-coop2">技术创业</h4>
             </div>
             <div class="coop-card">
-                <i class="fas fa-handshake"></i>
+                <i class="fas fa-lightbulb"></i>
                 <h4 class="t-coop3">化学 & 生物技术咨询</h4>
             </div>
             <div class="coop-card">
-                <i class="fas fa-user-graduate"></i>
+                <i class="fas fa-globe"></i>
                 <h4 class="t-coop4">教育咨询</h4>
             </div>
         </div>
@@ -130,12 +155,12 @@
     <section class="expertise-dark">
         <div class="container exp-content">
             <div class="exp-item">
-                <h2 class="t-exp1-h">技术背景</h2>
-                <p id="t-exp1-p" style="opacity:0.9">深度交叉化学生物学、有机化学、催化及核酸化学领域。致力于基因测序技术迭代、多组学及分子检测前沿创新。</p>
+                <h2 class="serif-title t-exp1-h">技术背景</h2>
+                <p id="t-exp1-p">深度交叉化学生物学、有机化学、催化及核酸化学领域。致力于基因测序技术迭代、多组学及分子检测前沿创新。</p>
             </div>
             <div class="exp-item">
-                <h2 class="t-exp2-h">商业转化</h2>
-                <p id="t-exp2-p" style="opacity:0.9">利用 14 年海外研发与管理经验，为早期硬科技项目提供从实验室到市场的战略咨询，并专注于大健康、癌症早筛及抗衰老领域的商业化探索。</p>
+                <h2 class="serif-title t-exp2-h">商业转化</h2>
+                <p id="t-exp2-p">利用 14 年海外研发与管理经验，为早期硬科技项目提供从实验室到市场的战略咨询，并专注于大健康、癌症早筛及抗衰老领域的商业化探索。</p>
             </div>
         </div>
     </section>
@@ -150,16 +175,16 @@
         const content = {
             zh: {
                 name: "严涛 博士",
-                creds: "<span>国家级海外高层次人才</span><br><span>曾于麻省理工学院 (MIT) 与剑桥大学 (Cambridge) 深造，师从两位诺贝尔奖得主</span>",
+                creds: "<span>国家级海外高层次人才</span><br><span style='font-size: 0.95em; opacity: 0.9; color: var(--text-light); display: inline-block; margin-top: 5px;'>曾于麻省理工学院 (MIT) 与剑桥大学 (Cambridge) 深造，师从两位诺贝尔奖得主</span>",
                 email: "邮件联系",
                 download: "简历下载",
                 coopTitle: "主要合作方向",
                 coop1: "学术成果转化",
                 coop2: "技术创业",
-                coop3: "化学&生物技术咨询",
+                coop3: "化学 & 生物技术咨询",
                 coop4: "教育咨询",
                 pill1h: "科研履历", pill1p: "MIT & 剑桥大学研究员",
-                pill2h: "产业积淀", pill2p: "Illumina (因美纳) 高级科学家&项目负责人",
+                pill2h: "产业积淀", pill2p: "Illumina (因美纳) 高级科学家 & 项目负责人",
                 pill3h: "当前角色", pill3p: "首席科学家 (CSO) | Biotech 初创公司",
                 exp1h: "技术背景", exp1p: "深度交叉化学生物学、有机化学、催化及核酸化学领域。致力于基因测序技术迭代、多组学及分子检测前沿创新。",
                 exp2h: "商业转化", exp2p: "利用 14 年海外研发与管理经验，为早期硬科技项目提供从实验室到市场的战略咨询，并专注于大健康、癌症早筛及抗衰老领域的商业化探索。",
@@ -167,10 +192,10 @@
             },
             en: {
                 name: "Yan Tao, PhD",
-                creds: "<span>National Global Expert</span><br><span>Alumnus of MIT & Cambridge, Mentored by Two Nobel Laureates</span>",
+                creds: "<span>National Global Expert</span><br><span style='font-size: 0.95em; opacity: 0.9; color: var(--text-light); display: inline-block; margin-top: 5px;'>Alumnus of MIT & Cambridge, Mentored by Two Nobel Laureates</span>",
                 email: "Email Me",
                 download: "Download CV",
-                coopTitle: "Main Cooperation Areas",
+                coopTitle: "Core Competencies",
                 coop1: "Tech Transfer",
                 coop2: "Entrepreneurship",
                 coop3: "Chemical & Biotech Consulting",
@@ -178,7 +203,7 @@
                 pill1h: "Academic Roots", pill1p: "Research Fellow at MIT & Cambridge",
                 pill2h: "Industry Background", pill2p: "Sr. Scientist & Project Leader at Illumina",
                 pill3h: "Current Role", pill3p: "Chief Scientific Officer | Biotech Start-up",
-                exp1h: "Technical Background", exp1p: "Expertise in Chemical Biology, Organic Chemistry, Catalysis, and Nucleic Acid Chemistry. Dedicated to NGS innovation, Multi-omics, and molecular diagnostics.",
+                exp1h: "Technical Domain", exp1p: "Expertise in Chemical Biology, Organic Chemistry, Catalysis, and Nucleic Acid Chemistry. Dedicated to NGS innovation, Multi-omics, and molecular diagnostics.",
                 exp2h: "Commercialization", exp2p: "Leveraging 14 years of R&D experience to provide strategic advisory for deep-tech projects, focusing on healthcare, cancer screening, and anti-aging sectors.",
                 footer: "© 2026 Yan Tao, PhD | Dedicated to IP Licensing and Technology Commercialization"
             }
@@ -214,7 +239,6 @@
         function handleDownload() {
             const pass = prompt("Please contact Tao for the password: ");
             if (pass === "yantaobio") {
-                // 使用 location.href 触发下载，更稳定
                 window.location.href = "Resume_YanTao.pdf";
             } else if (pass !== null) {
                 alert("Incorrect password. Please contact Tao.");
